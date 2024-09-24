@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Game from '../components/Game.astro'
+import Game from '../components/Game.jsx'
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<h1>Tic-Tac-Toe</h1>
-		<Game />
+		<Game client:load/>
 	</main>
 </Layout>
 
