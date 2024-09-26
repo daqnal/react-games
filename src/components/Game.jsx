@@ -18,7 +18,7 @@ function Board() {
 	const [turnCounter, setTurnCounter] = useState(1);
 	const [cells, setCells] = useState(Array(9).fill(""));
 	const [winner, setWinner] = useState("");
-	const [gameState, setGameState] = useState("❌ to move...");
+	const [gameState, setGameState] = useState("❌ TO MOVE");
 	const [showResetButton, setShowResetButton] = useState(false);
 
 	const winningCombos = {
@@ -39,11 +39,11 @@ function Board() {
 		if (turn === "x") {
 			boardArr[i] = x;
 			setTurn("o");
-			setGameState(`${o} to move`);
+			setGameState(`${o} TO MOVE`);
 		} else {
 			boardArr[i] = o;
 			setTurn("x");
-			setGameState(`${x} to move`);
+			setGameState(`${x} TO MOVE`);
 		}
 
 		setTurnCounter(turnCounter + 1);
@@ -58,11 +58,11 @@ function Board() {
 
 		if (winner !== "") {
 			if (winner === "❌") {
-				setGameState("❌ wins!");
+				setGameState("❌ WINS!");
 			} else if (winner === "⭕") {
-				setGameState("⭕ wins!");
+				setGameState("⭕ WINS!");
 			} else if (winner === "tie") {
-				setGameState("Tie!");
+				setGameState("TIE!");
 			}
 	
 			setShowResetButton(true);
@@ -90,7 +90,7 @@ function Board() {
 	function handleGameReset() {
 		setShowResetButton(false);
 		setWinner("");
-		setGameState("❌ to move...");
+		setGameState("❌ TO MOVE");
 		setTurn("x");
 		setTurnCounter(1);
 		setCells(Array(9).fill(""));
@@ -104,11 +104,15 @@ function Board() {
 
 	return (
 		<>
-			<div>
-				<h2 id='game-state'>{gameState}</h2>
-				{showResetButton && (
-					<button id='reset-button' onClick={() => handleGameReset()}>Reset</button>
-				)}
+			<div id="game-text-container">
+				<h1 id='game-title'>Tic-Tac-Toe</h1>
+				<div id='status-bar'>
+					<h2 id='game-state'>{gameState}</h2>
+					{showResetButton && (
+						<button id='reset-button' className='btn btn-error' onClick={() => handleGameReset()}>Reset</button>
+					)}
+				</div>
+				
 			</div>
 			
 			<div className="board">
