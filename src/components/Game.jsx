@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import "./Game.css";
 
 export default function Game() {
@@ -15,15 +15,17 @@ function Board() {
 	const o = "⭕";
 
 	const [turn, setTurn] = useState("x");
+	const [turnCounter, setTurnCounter] = useState(1);
 	const [cells, setCells] = useState(Array(9).fill(""));
-	const [winner, setWinner] = useState();
-	const [gameState, setGameState] = useState("");
+	const [winner, setWinner] = useState("");
+	const [gameState, setGameState] = useState("❌ to move...");
+	const [showResetButton, setShowResetButton] = useState(false);
 
 	const winningCombos = {
 		across: [[0, 1, 2], [3, 4, 5], [6, 7, 8]],
 		down: [[0, 3, 6], [1, 4, 7], [2, 5, 8]],
 		diagonal: [[0, 4, 8], [2, 4, 6]]
-	  };		
+	};		
 
 	function handleClick(i) {
 
@@ -37,10 +39,14 @@ function Board() {
 		if (turn === "x") {
 			boardArr[i] = x;
 			setTurn("o");
+			setGameState(`${o} to move`);
 		} else {
 			boardArr[i] = o;
 			setTurn("x");
+			setGameState(`${x} to move`);
 		}
+
+		setTurnCounter(turnCounter + 1);
 		
 		setCells(boardArr);
 		
@@ -48,26 +54,46 @@ function Board() {
 		
 	}
 
+	useEffect(() => {
+
+		if (winner !== "") {
+			if (winner === "❌") {
+				setGameState("❌ wins!");
+			} else if (winner === "⭕") {
+				setGameState("⭕ wins!");
+			} else if (winner === "tie") {
+				setGameState("Tie!");
+			}
+	
+			setShowResetButton(true);
+		}
+
+	}, [winner]);
+
 	function checkWinner(boardArr) {
+
 		for (let combo in winningCombos) {
 			winningCombos[combo].forEach((pattern) => {
 			  if (boardArr[pattern[0]] === "" || boardArr[pattern[1]] === "" || boardArr[pattern[2]] === "") {
 				// Do nothing if any cell in the combination is empty.
 			  } else if (boardArr[pattern[0]] === boardArr[pattern[1]] && boardArr[pattern[1]] === boardArr[pattern[2]]) {
+				
 				setWinner(boardArr[pattern[0]]);
-				handleWin(boardArr[pattern[0]]);
+			  } else if (turnCounter === 9) {
+				setWinner("tie")
 			  }
 			});
 		  }
 		  
 	}
 
-	function handleWin(winner) {
-		if (winner === "❌") {
-			setGameState("❌ wins lol");
-		} else {
-			setGameState("⭕ wins lol");
-		}
+	function handleGameReset() {
+		setShowResetButton(false);
+		setWinner("");
+		setGameState("❌ to move...");
+		setTurn("x");
+		setTurnCounter(1);
+		setCells(Array(9).fill(""));
 	}
 
 	function handleReset() {
@@ -78,7 +104,13 @@ function Board() {
 
 	return (
 		<>
-			<h2 value={gameState}></h2>
+			<div>
+				<h2 id='game-state'>{gameState}</h2>
+				{showResetButton && (
+					<button id='reset-button' onClick={() => handleGameReset()}>Reset</button>
+				)}
+			</div>
+			
 			<div className="board">
 				<div className="row" id="row-1">
 					<Cell value={cells[0]} onCellClick={() => handleClick(0)}/>
