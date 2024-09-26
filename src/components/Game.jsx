@@ -32,7 +32,7 @@ function Board() {
 		let boardArr = [...cells];
 
 		// First check if game is over or cell is already filled
-		if (boardArr[i] !== "") {
+		if (boardArr[i] !== "" || winner !== "") {
 			return;
 		}
 		
@@ -94,11 +94,6 @@ function Board() {
 		setTurn("x");
 		setTurnCounter(1);
 		setCells(Array(9).fill(""));
-	}
-
-	function handleReset() {
-		setWinner();
-  		setCells(Array(9).fill(""));
 	}
 
 
