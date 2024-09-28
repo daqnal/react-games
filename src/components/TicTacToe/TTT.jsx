@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import "./Game.css";
+import "./TTT.css";
 
-export default function Game() {
+export default function TTT() {
 
 	return (
 		<>
@@ -100,7 +100,7 @@ function Board() {
 	return (
 		<>
 			<div id="game-text-container">
-				<h1 id='game-title'>Tic-Tac-Toe</h1>
+				{/* <h1 id='game-title'>Tic-Tac-Toe</h1> */}
 				<div id='status-bar'>
 					<h2 id='game-state'>{gameState}</h2>
 					{showResetButton && (

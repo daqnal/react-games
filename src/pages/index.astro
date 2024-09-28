@@ -1,32 +1,61 @@
 ---
+import { SITE_TITLE} from "../consts.ts";
 import Layout from '../layouts/Layout.astro';
-import Game from '../components/Game.jsx'
+import GameSelector from '../components/GameSelector/GameSelector.jsx';
+import TTT from '../components/TicTacToe/TTT.jsx';
+import Otrio from '../components/Otrio/Otrio.jsx';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title={SITE_TITLE}>
 	<main>
-		<Game client:load/>
+		<div id="content-wrapper" class="bg-base-100/90">
+			<h1 class="font-bold">React Games</h1>
+			<GameSelector/>
+		</div>
+		
 	</main>
 </Layout>
 
 <style>
+
+	h1 {
+		font-size: 3em;
+		margin: 25px 0;
+	}
 	
 	main {
 		width: 100%;
 		height: 100%;
 
+		background: linear-gradient(135deg, #1a1b26, #7aa2f7, #bb9af7, #f7768e);
+		background-size: 150% 150%;
+		animation: gradient 10s ease infinite;
 
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	@keyframes gradient {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+	#content-wrapper {
+		width: 97vw;
+		height: 97vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		border-radius: var(--rounded-box);
+		backdrop-filter: blur(50px);
 	}
-
-	/* h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	} */
 	
 </style>
