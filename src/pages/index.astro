@@ -1,28 +1,19 @@
 ---
 import { SITE_TITLE} from "../consts.ts";
 import Layout from '../layouts/Layout.astro';
-import GameSelector from '../components/GameSelector/GameSelector.jsx';
-import TTT from '../components/TicTacToe/TTT.jsx';
-import Otrio from '../components/Otrio/Otrio.jsx';
+import App from "../components/Meta/App.jsx";
 ---
 
 <Layout title={SITE_TITLE}>
 	<main>
 		<div id="content-wrapper" class="bg-base-100/90">
-			<h1 class="font-bold">React Games</h1>
-			<GameSelector/>
+		  <App client:load/>
 		</div>
-		
 	</main>
 </Layout>
 
 <style>
 
-	h1 {
-		font-size: 3em;
-		margin: 25px 0;
-	}
-	
 	main {
 		width: 100%;
 		height: 100%;
@@ -57,5 +48,5 @@ import Otrio from '../components/Otrio/Otrio.jsx';
 		border-radius: var(--rounded-box);
 		backdrop-filter: blur(50px);
 	}
-	
+
 </style>
