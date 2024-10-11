@@ -100,11 +100,10 @@ function Board() {
 	return (
 		<>
 			<div id="game-text-container">
-				{/* <h1 id='game-title'>Tic-Tac-Toe</h1> */}
 				<div id='status-bar'>
 					<h2 id='game-state'>{gameState}</h2>
 					{showResetButton && (
-						<button id='reset-button' className='btn btn-error' onClick={() => handleGameReset()}>Reset</button>
+						<button id='reset-button' className='btn btn-sm btn-error' onClick={() => handleGameReset()}>Reset</button>
 					)}
 				</div>
 				
