@@ -1,6 +1,7 @@
 import "./GameParent.css";
 import { useState } from "react";
 import TTT from "../TicTacToe/TTT";
+import Otrio from "../Otrio/Otrio";
 
 export default function GameParent({
   selectorActive,
@@ -10,6 +11,7 @@ export default function GameParent({
 }) {
   // const [showSelector, setShowSelector] = useState(true);
   const [playTTT, setPlayTTT] = useState(false);
+  const [playOtrio, setPlayOtrio] = useState(false);
 
   function handleClick(title) {
     if (title === 0) {
@@ -17,8 +19,7 @@ export default function GameParent({
       loadGame(game);
     } else if (title === 1) {
       let game = "Otrio";
-      // loadGame(1);
-      console.log(`Sorry ${game} not support yet :(`);
+      loadGame(game);
     }
   }
 
@@ -28,7 +29,11 @@ export default function GameParent({
     setGamesActive(true);
     // Load in game
     if (game === "Tic-Tac-Toe") {
+      setPlayOtrio(false);
       setPlayTTT(true);
+    } else if (game === "Otrio") {
+      setPlayTTT(false);
+      setPlayOtrio(true);
     }
     // 0 = TTT
     // 1 = Otrio
@@ -40,6 +45,7 @@ export default function GameParent({
         <GameSelector handleClick={(title) => handleClick(title)} />
       )}
       {playTTT && gamesActive && <TTT />}
+      {playOtrio && gamesActive && <Otrio />}
     </>
   );
 }

@@ -8,6 +8,14 @@ export default function Otrio() {
 
 function Board() {
     return (
-        <h1>hi</h1>
+        <>
+            <Cell />
+        </>
+    )
+}
+
+function Cell() {
+    return (
+        <h2>cell!</h2>
     )
 }

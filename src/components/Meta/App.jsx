@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <>
-      <h1 className="font-bold">{SITE_TITLE}</h1>
+      <h1 className="font-bold mb-0">{SITE_TITLE}</h1>
       <MenuButtonRow goHome={() => setGoHome(true)} />
       <GameParent
         selectorActive={goHome}

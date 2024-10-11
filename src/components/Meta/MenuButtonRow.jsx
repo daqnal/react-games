@@ -1,6 +1,6 @@
 import "./MenuButtonRow.css";
 import { LuHome, LuGithub } from "react-icons/lu";
-import { useState } from "react";
+// import { useState } from "react";
 
 export default function MenuButtonRow({ goHome }) {
   function handleClick(i) {
