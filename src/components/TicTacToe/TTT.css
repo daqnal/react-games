@@ -37,8 +37,8 @@
   /* width: 70vw; */
   max-width: 600px;
   max-height: 600px;
-  border: 5px solid oklch(var(--nc));
-  border-radius: 25px;
+  border: 5px solid oklch(var(--bc));
+  border-radius: var(--rounded-box);
 }
 
 .icon-button {
@@ -63,13 +63,13 @@
 }
 
 #row-2 {
-  border-top: 5px solid oklch(var(--nc));
-  border-bottom: 5px solid oklch(var(--nc));
+  border-top: 5px solid oklch(var(--bc));
+  border-bottom: 5px solid oklch(var(--bc));
 }
 
 .center-cell {
-  border-left: 5px solid oklch(var(--nc));
-  border-right: 5px solid oklch(var(--nc));
+  border-left: 5px solid oklch(var(--bc));
+  border-right: 5px solid oklch(var(--bc));
 }
 
 @media screen and (max-height: 600px) {

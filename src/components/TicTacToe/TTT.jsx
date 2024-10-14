@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import "./TTT.css";
+import JSConfetti from 'js-confetti'
+
 
 export default function TTT() {
 
@@ -56,11 +58,19 @@ function Board() {
 
 	useEffect(() => {
 
+		const jsConfetti = new JSConfetti()
+
 		if (winner !== "") {
 			if (winner === "❌") {
 				setGameState("❌ WINS!");
+				jsConfetti.addConfetti({
+					emojis: ["❌"]
+				})
 			} else if (winner === "⭕") {
 				setGameState("⭕ WINS!");
+				jsConfetti.addConfetti({
+					emojis: ["⭕"]
+				})
 			} else if (winner === "tie") {
 				setGameState("TIE!");
 			}

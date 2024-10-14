@@ -16,6 +16,6 @@ function Board() {
 
 function Cell() {
     return (
-        <h2>cell!</h2>
+        <h2>TODO</h2>
     )
 }
