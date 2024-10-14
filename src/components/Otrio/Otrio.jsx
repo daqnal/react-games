@@ -1,3 +1,5 @@
+import "./Otrio.css";
+
 export default function Otrio() {
     return (
         <>
@@ -9,13 +11,27 @@ export default function Otrio() {
 function Board() {
     return (
         <>
-            <Cell />
+            <div id="row-1" className="row">
+                <Cell />
+                <Cell />
+                <Cell />
+            </div>
+            <div id="row-2" className="row">
+                <Cell />
+                <Cell />
+                <Cell />
+            </div>
+            <div id="row-3" className="row">
+                <Cell />
+                <Cell />
+                <Cell />
+            </div>
         </>
     )
 }
 
 function Cell() {
     return (
-        <h2>TODO</h2>
+        <p>Hi</p>
     )
 }

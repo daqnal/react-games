@@ -1,5 +1,5 @@
 import "./MenuButtonRow.css";
-import { LuHome, LuGithub } from "react-icons/lu";
+import { LuHome, LuGithub, LuPalette } from "react-icons/lu";
 // import { useState } from "react";
 
 
@@ -22,6 +22,7 @@ export default function MenuButtonRow({ goHome }) {
 
       <div className="dropdown">
         <div tabIndex={0} role="button" className="btn btn-sm m-1 btn-component">
+          <LuPalette />
           Theme
           <svg
             width="12px"
@@ -32,7 +33,7 @@ export default function MenuButtonRow({ goHome }) {
             <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
           </svg>
         </div>
-        <ul tabIndex={0} className="dropdown-content bg-base-300 rounded-box z-[1] w-30 p-2 shadow-2xl" data-choose-theme>
+        <ul tabIndex={0} className="dropdown-content bg-base-100 rounded-box z-[1] w-30 p-2 shadow-2xl" data-choose-theme>
           <li>
             <input
               type="radio"
