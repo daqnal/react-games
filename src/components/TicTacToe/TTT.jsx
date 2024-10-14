@@ -21,7 +21,7 @@ function Board() {
 	const [cells, setCells] = useState(Array(9).fill(""));
 	const [winner, setWinner] = useState("");
 	const [gameState, setGameState] = useState("❌ TO MOVE");
-	const [showResetButton, setShowResetButton] = useState(false);
+	// const [showResetButton, setShowResetButton] = useState(false);
 
 	const winningCombos = {
 		across: [[0, 1, 2], [3, 4, 5], [6, 7, 8]],
@@ -75,7 +75,7 @@ function Board() {
 				setGameState("TIE!");
 			}
 	
-			setShowResetButton(true);
+			// setShowResetButton(true);
 		}
 
 	}, [winner]);
@@ -98,7 +98,7 @@ function Board() {
 	}
 
 	function handleGameReset() {
-		setShowResetButton(false);
+		// setShowResetButton(false);
 		setWinner("");
 		setGameState("❌ TO MOVE");
 		setTurn("x");
@@ -112,9 +112,10 @@ function Board() {
 			<div id="game-text-container">
 				<div id='status-bar'>
 					<h2 id='game-state'>{gameState}</h2>
-					{showResetButton && (
+					{/* {showResetButton && (
 						<button id='reset-button' className='btn btn-sm btn-error' onClick={() => handleGameReset()}>Reset</button>
-					)}
+					)} */}
+					<button id='reset-button' className='btn btn-sm btn-error' onClick={() => handleGameReset()}>Reset</button>
 				</div>
 				
 			</div>
