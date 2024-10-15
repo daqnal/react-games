@@ -12,7 +12,7 @@ const { title } = Astro.props;
 		<script is:inline>
 			// ☝️ This script prevents the FART effect.
 			if (localStorage.getItem("theme") === null) {
-				document.documentElement.setAttribute("data-theme", "light");
+				document.documentElement.setAttribute("data-theme", "auto");
 			} else
 				document.documentElement.setAttribute(
 				"data-theme",
@@ -38,26 +38,46 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
-	/* :root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	} */
 
 	html {
 		font-family: system-ui, sans-serif;
-	}
+		overflow: hidden;
 
-	body, html {
-		height: 100%;
-		width: 100%;
+		/* For desktops, use 100vh as the height of everything */
+		height: 100vh;
+		/* For mobile devices, since bars crop the viewport, use this property that works somehow */
+		height: -webkit-fill-available;
+
+		width: 100vw;
+
 		margin: 0;
 		padding: 0;
+	}
+
+	body {
+		height: inherit;
+		width: inherit;
+		margin: 0;
+		padding: 0;
+
+		background: linear-gradient(135deg, #1a1b26, #7aa2f7, #bb9af7, #f7768e);
+		background-size: 150% 150%;
+		animation: gradient 10s ease infinite;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
 	}
 </style>

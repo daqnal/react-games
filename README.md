@@ -8,7 +8,8 @@
 - React
 - Tailwind
 - DaisyUI
-- theme-change?
+- tailwind/typography
+- theme-change
 - react-icons
 
 ---

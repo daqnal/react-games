@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import "./TTT.css";
+import styles from "./TTT.module.css";
 import JSConfetti from 'js-confetti'
 
 
@@ -109,29 +109,26 @@ function Board() {
 
 	return (
 		<>
-			<div id="game-text-container">
-				<div id='status-bar'>
-					<h2 id='game-state'>{gameState}</h2>
-					{/* {showResetButton && (
-						<button id='reset-button' className='btn btn-sm btn-error' onClick={() => handleGameReset()}>Reset</button>
-					)} */}
-					<button id='reset-button' className='btn btn-sm btn-error' onClick={() => handleGameReset()}>Reset</button>
+			<div id={styles["game-text-container"]}>
+				<div id={styles["status-bar"]}>
+					<h2 id={styles["game-state"]}>{gameState}</h2>
+					<button id={styles["reset-button"]} className='btn btn-sm btn-error' onClick={() => handleGameReset()}>Reset</button>
 				</div>
 				
 			</div>
 			
-			<div className="board">
-				<div className="row" id="row-1">
+			<div className={styles.board}>
+				<div className={styles.row} id={styles["row-1"]}>
 					<Cell value={cells[0]} onCellClick={() => handleClick(0)}/>
 					<Cell value={cells[1]} onCellClick={() => handleClick(1)} centerCell={true}/>
 					<Cell value={cells[2]} onCellClick={() => handleClick(2)}/>
 				</div>
-				<div className="row" id="row-2">
+				<div className={styles.row} id={styles["row-2"]}>
 					<Cell value={cells[3]} onCellClick={() => handleClick(3)}/>
 					<Cell value={cells[4]} onCellClick={() => handleClick(4)} centerCell={true}/>
 					<Cell value={cells[5]} onCellClick={() => handleClick(5)}/>
 				</div>
-				<div className="row" id="row-3">
+				<div className={styles.row} id={styles["row-3"]}>
 					<Cell value={cells[6]} onCellClick={() => handleClick(6)}/>
 					<Cell value={cells[7]} onCellClick={() => handleClick(7)} centerCell={true}/>
 					<Cell value={cells[8]} onCellClick={() => handleClick(8)}/>
@@ -145,14 +142,14 @@ function Board() {
 function Cell({ value, centerCell, onCellClick }) {
 	
 	// Add the class "cell" to all Cell components, and add the class "center cell" for those with the prop
-	let classList = "cell";
+	let classList = `${styles["cell"]}`;
 	if (centerCell === true) {
-		classList = classList.concat(" center-cell");
+		classList = classList.concat(` ${styles["center-cell"]}`)
 	}
 
 	return (
 		<div className={classList}>
-			<button className="icon-button" onClick={onCellClick}>{value}</button>
+			<button className={styles["icon-button"]} onClick={onCellClick}>{value}</button>
 		</div>
 	)
 }
