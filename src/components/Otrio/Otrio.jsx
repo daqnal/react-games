@@ -3,7 +3,9 @@ import styles from "./Otrio.module.css";
 export default function Otrio() {
     return (
         <>
+            
             <Board/>
+            <Tray />
         </>
     )
 }
@@ -43,4 +45,22 @@ function Cell({ value, centerCell, onCellClick }) {
 			<button className={styles["icon-button"]} onClick={onCellClick}>{value}</button>
 		</div>
 	)
+}
+
+function Tray() {
+    return (
+        <div className={styles["tray"]}>
+            <TrayCell />
+            <TrayCell />
+            <TrayCell />
+        </div>
+    )
+}
+
+function TrayCell() {
+    return (
+        <div>
+            <button className={styles["tray-icon-button"]}>O</button>
+        </div>
+    )
 }

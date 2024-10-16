@@ -44,3 +44,20 @@
     border-left: 5px solid oklch(var(--bc));
     border-right: 5px solid oklch(var(--bc));
 }
+
+/* ---------- */
+
+.tray {
+  display: flex;
+  border: 5px solid oklch(var(--bc));
+  border-radius: var(--rounded-box);
+}
+
+.tray-icon-button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 4em;
+}
