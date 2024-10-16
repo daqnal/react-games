@@ -5,7 +5,7 @@ export default function Otrio() {
         <>
             
             <Board/>
-            <Tray />
+            <Tray orientation="horizontal"/>
         </>
     )
 }
@@ -47,9 +47,21 @@ function Cell({ value, centerCell, onCellClick }) {
 	)
 }
 
-function Tray() {
+function Tray( orientation ) {
+
+    let classList = `${styles["tray"]}`
+
+    if (orientation === "horizontal") {
+        classList = classList.concat(` ${styles["tray-horizontal"]}`)
+    } else if (orientation === "vertical") {
+        classList = classList.concat(` ${styles["tray-vertical"]}`)
+    }
+
+    console.log(orientation);
+    console.log(orientation === "horizontal");
+
     return (
-        <div className={styles["tray"]}>
+        <div className={classList}>
             <TrayCell />
             <TrayCell />
             <TrayCell />
@@ -58,9 +70,10 @@ function Tray() {
 }
 
 function TrayCell() {
+
     return (
-        <div>
-            <button className={styles["tray-icon-button"]}>O</button>
+        <div className={styles["tray-cell"]}>
+            <button className={styles["tray-icon-button"]}>⭕</button>
         </div>
     )
 }
