@@ -11,6 +11,7 @@
 - tailwind/typography
 - theme-change
 - react-icons
+- dnd-kit
 
 ---
 

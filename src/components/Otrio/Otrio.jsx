@@ -1,12 +1,17 @@
 import styles from "./Otrio.module.css";
 
 export default function Otrio() {
+
     return (
-        <>
-            
-            <Board/>
-            <Tray orientation="horizontal"/>
-        </>
+        <div id={styles["game-wrapper"]}>
+            <Tray orientation={"horizontal"}/>
+            <div id={styles["tray-board-row"]}>
+                <Tray orientation={"vertical"}/>
+                <Board/>
+                <Tray orientation={"vertical"}/>
+            </div>
+            <Tray orientation={"horizontal"}/>
+        </div>
     )
 }
 
@@ -47,7 +52,7 @@ function Cell({ value, centerCell, onCellClick }) {
 	)
 }
 
-function Tray( orientation ) {
+function Tray({ orientation }) {
 
     let classList = `${styles["tray"]}`
 
@@ -56,9 +61,6 @@ function Tray( orientation ) {
     } else if (orientation === "vertical") {
         classList = classList.concat(` ${styles["tray-vertical"]}`)
     }
-
-    console.log(orientation);
-    console.log(orientation === "horizontal");
 
     return (
         <div className={classList}>
