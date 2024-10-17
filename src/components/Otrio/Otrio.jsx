@@ -4,13 +4,16 @@ export default function Otrio() {
 
     return (
         <div id={styles["game-wrapper"]}>
-            <Tray orientation={"horizontal"}/>
-            <div id={styles["tray-board-row"]}>
-                <Tray orientation={"vertical"}/>
-                <Board/>
-                <Tray orientation={"vertical"}/>
+            <div id={styles["game-flex-container"]}>
+                <Tray orientation={"horizontal"}/>
+                <div id={styles["tray-board-row"]}>
+                    <Tray orientation={"vertical"}/>
+                    <Board/>
+                    <Tray orientation={"vertical"}/>
+                </div>
+                <Tray orientation={"horizontal"}/>
             </div>
-            <Tray orientation={"horizontal"}/>
+            
         </div>
     )
 }
