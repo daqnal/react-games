@@ -1,5 +1,5 @@
 import "./MenuButtonRow.css";
-import { LuHome, LuGithub, LuPalette } from "react-icons/lu";
+import { Home, Github, Palette } from "lucide-react";
 // import { useState } from "react";
 
 
@@ -15,14 +15,14 @@ export default function MenuButtonRow({ goHome }) {
   return (
     <div id="button-row">
       <Button
-        icon={<LuHome />}
+        icon={<Home className="icon" />}
         title={"Home"}
         onButtonClick={() => handleClick(0)}
       />
 
       <div className="dropdown">
         <div tabIndex={0} role="button" className="btn btn-sm m-1 btn-component">
-          <LuPalette />
+          <Palette className="icon" />
           Theme
           <svg
             width="12px"
@@ -78,7 +78,7 @@ export default function MenuButtonRow({ goHome }) {
       </div>
 
       <Button
-        icon={<LuGithub />}
+        icon={<Github className="icon" />}
         title={"Github"}
         onButtonClick={() => handleClick(1)}
       />
